@@ -39,9 +39,9 @@ contract OrderSwap {
  function executeOrder (uint id) public {
    Order memory order = orders[id];
    require(!order.executed, "order executed");
-     require(IERC20(order.token2).transferFrom(msg.sender, address(this), ORD.amountDesired),"Error: Transaction Failed");
-        require(IERC20(order.fromToken).transfer(msg.sender, order.amountIn), "Error: failed to swap token one");
-        require(IERC20(order.toToken).transfer(order.sender, order.amountOut), "Error: failed to swap token two");
+    //  require(IERC20(order.token2).transferFrom(msg.sender, address(this), ORD.amountDesired),"Error: Transaction Failed");
+   require(IERC20(order.fromToken).transfer(msg.sender, order.amountIn), "Error: failed to swap token one");
+   require(IERC20(order.toToken).transfer(order.sender, order.amountOut), "Error: failed to swap token two");
 
  }
 }
